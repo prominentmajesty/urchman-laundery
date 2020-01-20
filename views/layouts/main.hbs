@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{title}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/styles/bootstrap.css">
+    <link rel="stylesheet" href="/styles/body.css">
+    <link rel="stylesheet" href="/all.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/>
+   <link href="https://fonts.googleapis.com/css?family=Abel|Changa|Cutive+Mono|Encode+Sans|Open+Sans+Condensed|Quantico|Raleway+Dots|Saira|Wallpoet&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/{{style}}">
+</head>
+<body style="overflow-x:hidden">
+    {{{body}}}
+   <script src="/scripts/jquery-3.3.1.min.js"></script>
+   <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+   <script src="/scripts/bootstrap.js"></script>
+   <script src="/scripts/body.js" ></script>
+   <script src="/scripts/{{script}}"></script>
+   <script type="text/javascript">
+      $('#customFile').change(function(event){
+      var fileName = event.target.files[0].name;
+      if (event.target.nextElementSibling!=null){
+      event.target.nextElementSibling.innerText=fileName; 
+        }
+    });
+   </script>
+</body>
+</html>
