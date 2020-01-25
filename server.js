@@ -46,7 +46,7 @@ app.use((req,res,next)=>{
   });
   app.use('/',index);
   //app.use('/admin',admin);
-  //app.use('/users',users);
+  app.use('/users',users);
 
 app.listen(port, ()=>{
     console.log(`Cool !! app is up and running @ port ${port}`);
