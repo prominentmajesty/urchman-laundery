@@ -1,70 +1,89 @@
 {{> header}}
 <div class="container setPadding">
-    <form class="needs-validation" name="signupForm" id="registerForm" novalidate>
+    <!--<div class="toast" id = "toast"data-autohide="false">
+        <div class="toast-header">
+            <strong class="mr-auto">Error</strong>
+            <small class="text-muted">11 mins ago</small>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="toast-body">
+            Empty Text Field.
+        </div>
+    <div>-->
+    <form name="signupForm" id="registerForm">
+        <div class="alert alert-success" id="alert-success" role="alert">
+            A simple success alert—check it out!
+        </div>
+        <div class="alert alert-danger" id="alert-danger" role="alert">
+            A simple danger alert—check it out!
+        </div>
        <div class="textlabel">Service Request Form</div>
         <div class="form-row">
             <div class="col-md-4 mb-3">
-                <label for="validationCustom01">Enter your name</label>
-                <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                <label for="UserName">Enter your name</label>
+                <input type="text" class="form-control" id="UserName" autofocus  data-placement="right">
                 <div class="valid-feedback">
-                    Good!
+                    Please Enter Your Name
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <label for="validationCustom02">Enter your phone number</label>
-                <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+                <label for="PhoneNumber">Enter your phone number</label>
+                <input type="text" class="form-control" id="PhoneNumber">
                 <div class="valid-feedback">
-                    Good!
+                    Please Enter Your Phone Number
                 </div>
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-4 mb-3">
-                <label for="validationCustomUsername">Enter Your email adress</label>
+                <label for="EmailAdress">Enter Your email adress</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        <span class="input-group-text" id="Email">@</span>
                     </div>
-                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                    <div class="invalid-feedback">
-                        Please enter a valid email adress.
+                    <input type="text" class="form-control" id="EmailAdress">
+                    <div class="valid-feedback">
+                        Please Provide Your Email Adress
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <label for="validationCustom04">Select service</label>
-                <select class="custom-select" id="validationCustom04" required>
+                <label for="SelectInput">Select service</label>
+                <select class="custom-select" id="SelectInput">
                     <option selected disabled value="">request for service</option>
-                    <option>...</option>
+                    <option>Home Service</option>
+                    <option>Office Delivery</option>
                 </select>
-                <div class="invalid-feedback">
+                <div class="valid-feedback">
                     Please select a service that will be offered to you.
                 </div>
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-8 mb-3">
-                <label for="validationCustom05">Enter delivery type</label>
-                <input type="text" class="form-control" id="validationCustom05" required>
-                <div class="invalid-feedback">
+                <label for="deliveryType">Enter delivery type</label>
+                <input type="text" class="form-control" id="deliveryType">
+                <div class="valid-feedback">
                     Please enter the delivery type.
                 </div>
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-8 mb-3">
-                <label for="validationCustom03">Adress</label>
-                <input type="text" class="form-control" id="validationCustom03" required>
-                <div class="invalid-feedback">
+                <label for="Adress">Adress</label>
+                <input type="text" class="form-control" id="Adress">
+                <div class="valid-feedback">
                     Enter your adress.
                 </div>
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-8 mb-3">
-                <label for="validationTextarea">Enter Items</label>
-                <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" required></textarea>
-                <div class="invalid-feedback">
+                <label for="Items">Enter Items</label>
+                <textarea class="form-control" id="Items" placeholder="Items to be washed"></textarea>
+                <div class="valid-feedback">
                      Please enter the clothes to be washed.
                 </div>
             </div>
@@ -75,51 +94,51 @@
         </div>
         <div class="form-row">
             <div class="col-md-3">
-                <label for="validationCustomUsername">Enter card number</label>
+                <label for="CreditCard">Enter card number</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend"><i class="far fa-credit-card"></i></span>
                     </div>
-                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                    <div class="invalid-feedback">
+                    <input type="text" class="form-control" id="CreditCard">
+                    <div class="valid-feedback">
                         Please enter a valid credit card.
                     </div>
                 </div>
             </div>
             <div class="col-md-3 pl-3">
-               <label for="validationCustom03">Expiring date</label>
+               <label for="ExpiringDate">Expiring date</label>
                <div class="input-group input-daterange" id = "loadDatePicker">
-                    <input type="text" placeholder="dd/mm/yyyy" class="form-control" aria-describedby="inputGroupPrepend" required>
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                     </div>
-                    <div class="invalid-feedback">
-                        Please enter card expiring date.
+                    <input type="text" placeholder="mm/yyyy" class="form-control" id="ExpiringDate">
+                     <div class="valid-feedback">
+                        Please Choose a Date.
                     </div>
                 </div>
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-3">
-                <label for="validationCustom03">Enter card name</label>
+                <label for="CardName">Enter card name</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-sort-alpha-down"></i></span>
                     </div>
-                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                    <div class="invalid-feedback">
-                      please enter the name of your.
+                    <input type="text" class="form-control" id="CardName" aria-describedby="inputGroupPrepend">
+                    <div class="valid-feedback">
+                      please enter the name of your card.
                     </div>
                 </div>
             </div> 
             <div class="col-md-3 pl-3">
-                <label for="validationCustom03"> card code</label>
+                <label for="CardCode"> card code</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-unlock-alt"></i></span>
                     </div>
-                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-                    <div class="invalid-feedback">
+                    <input type="text" class="form-control" id="CardCode" aria-describedby="inputGroupPrepend">
+                    <div class="valid-feedback">
                       Enter three digit code behind your card.
                     </div>
                 </div>
@@ -141,7 +160,7 @@
                 <label for="validationCustomUsername">Enter card name</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupPrepend"><i class="fas fa-sort-alpha-down"></i></span>
+                        <span class="input-group-texcheckBoxt" id="inputGroupPrepend"><i class="fas fa-sort-alpha-down"></i></span>
                     </div>
                     <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                     <div class="invalid-feedback">
@@ -153,16 +172,16 @@
         <div class="col-md-8 mb-1.9 pt-4">
             <div class="form-group">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                    <label class="form-check-label" for="invalidCheck">
+                    <input class="form-check-input" name="form-check-input" type="checkbox" value="" id="checkBox">
+                    <label class="form-check-label" for="checkBox">
                         Agree to terms and conditions
                     </label>
-                    <div class="invalid-feedback">
+                    <div class="valid-feedback" id="chk">
                         You must agree before submitting.
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary" type="submit">Submit form</button>
+            <button class="btn btn-primary" id="submitbtn">Submit form</button>
         </div>
     </form>
 </div>

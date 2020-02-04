@@ -8,6 +8,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var admin = require('./routes/admin');
 var {config} = require('./database/database');
+var postman = require('./routes/postman');
 
 
 var app = express();
@@ -47,6 +48,7 @@ app.use((req,res,next)=>{
   app.use('/',index);
   //app.use('/admin',admin);
   app.use('/users',users);
+  app.use('/postman', postman);
 
 app.listen(port, ()=>{
     console.log(`Cool !! app is up and running @ port ${port}`);

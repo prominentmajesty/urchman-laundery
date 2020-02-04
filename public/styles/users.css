@@ -14,8 +14,68 @@
     color: #26a69a;
     display: block;
 }
+/*.toast{
+    display : none;
+}*/
+
 #formatPayment{
     font-size: 1.20rem
+}    
+input.is-valid{
+    border-color: #36cc36;
+}
+input.is-invalid{
+    border-color: red;
+}
+input + .valid-feedback{
+    display:block;
+    color:red;
+    height: 0;
+    opacity :0
+}
+input.is-invalid + .valid-feedback{
+    opacity : 1;
+    height : auto;
+}
+/* For Text Area*/
+textarea.valid{
+    border-color: #36cc36;
+}
+textarea.invalid{
+    border-color: red;
+}
+textarea + .valid-feedback{
+    display:block;
+    color:red;
+    height: 0;
+    opacity :0
+}
+textarea.invalid + .valid-feedback{
+    height: auto;
+    opacity : 1;
+}
+/* For Select*/
+select.valid{
+    border-color: #36cc36;
+}
+select.invalid{
+    border-color: red
+}
+select + .valid-feedback{
+    display:block;
+    color:red;
+    height: 0;
+    opacity :0
+}
+select.invalid + .valid-feedback{
+    height: auto;
+    opacity: 1;
+}
+.alert-success{
+    display: none;
+}
+.alert-danger{
+    display:none
 }
 @media (max-width: 575.98px) { 
     .setPadding{
