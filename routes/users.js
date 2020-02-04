@@ -11,7 +11,7 @@ router.get('/register', function(req,res){
 });
 
 router.post('/postUsers', function(req, res){
-    var Name = req.body.Name;
+    var UserName = req.body.UserName;
     var PhoneNumber = req.body.PhoneNumber;
     var EmailAddress = req.body.EmailAddress;
     var Select  = req.body.Select;

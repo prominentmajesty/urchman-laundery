@@ -188,7 +188,7 @@ $(document).ready(function () {
 
     function loadDataToServer(){
         var postUsers = {
-            Name : Name.val(),
+            UserName : Name.val(),
             PhoneNumber : PhoneNumber.val(),
             EmailAddress : EmailAdress.val(),
             Select : Select.val(),
