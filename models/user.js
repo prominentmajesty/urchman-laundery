@@ -4,11 +4,11 @@ const UserSchema = mongoose.Schema({
         type : String,
         required : true
     },
-    PhoneNimber : {
+    PhoneNumber : {
         type : String,
         required : true
     },
-    Email : {
+    EmailAdress : {
         type : String,
         required : true
     },
@@ -24,7 +24,7 @@ const UserSchema = mongoose.Schema({
         type : String,
         required : true
     },
-    Item : {
+    Items : {
         type : String,
         required : true
     },
