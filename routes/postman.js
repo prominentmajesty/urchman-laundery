@@ -9,10 +9,33 @@ router.post('/postman', (req, res)=>{
     var Select = req.body.Select;
     var DeliveryType = req.body.DeliveryType;
     var Address  = req.body.address;
-    var items = req.body.items;
+    var Items = req.body.items;
     var CardNumber = req.body.CardNumber;
     var ExpiringDate = req.body.ExpiringDate;
     var CardName = req.body.CardName;
     var CardCode = req.body.CardCode;
+
+    var user = new User({
+        UserName : UserName,
+        PhoneNumber : PhoneNumber,
+        EmailAdress : EmailAddress,
+        SelectServices : Select,
+        DeliveryType : DeliveryType,
+        Adress : Address,
+        Items : Items,
+        CardNumber : CardNumber,
+        ExpiringDate : ExpiringDate,
+        CardName : CardName,
+        CardCode : CardCode
+
+    });
+
+    user.save().then((document)=>{
+    console.log(document);
+    response.status(200).send('Your Registration Was successful');
+    }).catch((err)=>{
+        console.log(err);
+        res.status(400).send('Un-Successfull!! : Request Failed');
+    });
 });
 module.exports = router;

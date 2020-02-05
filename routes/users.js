@@ -28,8 +28,27 @@ router.post('/postUsers', function(req, res){
             res.status(501).send('User allready exist');
             console.log(`${returnEmail} actually exist`);
         }else{
-            res.status(200).send('Successfully registered');
+            let user = new User({
+                UserName : UserName,
+                PhoneNumber : PhoneNumber,
+                EmailAdress : EmailAddress,
+                SelectServices : Select,
+                DeleiveryType : DeliveryType,
+                Address : Address,
+                Items : Item,
+                CardNumber : CardNumber,
+                ExpiringDate :ExpiringDate,
+                CardName : CardName,
+                CardCode : CardCode
+            });
+            user.save((err, data)=>{
+                if(err){
+                    console.log(err);
+                   return res.status(401).send(`Error : ${err}`); 
+                }
+                res.status(200).send('Successfully registered');
             console.log(`new email ${returnEmail} has been registered`);
+            });
         }
     }, (err)=>{
         res.status(400).send('An error has occured');
