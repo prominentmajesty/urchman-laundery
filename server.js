@@ -1,5 +1,5 @@
 var express = require('express');
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'); 
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var connect_Flash = require('connect-flash');
@@ -13,7 +13,7 @@ var postman = require('./routes/postman');
 
 var app = express();
 var port = process.env.PORT || 3000;
-
+mongoose.set('useCreateIndex', true);
 mongoose.connect(config,{useUnifiedTopology: true,useNewUrlParser: true}, function(){
     console.log('Data Base Connected Successfully');
 });
@@ -46,7 +46,7 @@ app.use((req,res,next)=>{
     next();
   });
   app.use('/',index);
-  //app.use('/admin',admin);
+  app.use('/admin',admin);
   app.use('/users',users);
   app.use('/postman', postman);
 

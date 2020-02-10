@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var AutoIncreament = require('mongoose-sequence')(mongoose);
 const UserSchema = mongoose.Schema({
     UserName : {
         type : String,
@@ -43,7 +44,12 @@ const UserSchema = mongoose.Schema({
     CardCode : {
         type : String,
         required : true
+    },
+    order : {
+        type : Number
     }
 });
 
-module.exports = Users = mongoose.model('User', UserSchema);
+UserSchema.plugin(AutoIncreament, {id : 'order_seq', inc_field : 'order'});
+
+module.exports = User = mongoose.model('User', UserSchema);

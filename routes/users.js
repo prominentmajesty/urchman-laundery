@@ -16,38 +16,37 @@ router.post('/postUsers', function(req, res){
     var EmailAddress = req.body.EmailAddress;
     var Select  = req.body.Select;
     var DeliveryType = req.body.DeliveryType;
-    var Address = req.body.Address;
+    var Address = req.body.Adress;
     var Item = req.body.Item;
     var CardNumber = req.body.CardNumber;
     var ExpiringDate = req.body.ExpiringDate;
     var CardName = req.body.CardName;
     var CardCode = req.body.CardCode; 
 
-    User.findOne({Email:EmailAddress}).then((returnEmail)=>{
+    User.findOne({EmailAdress:EmailAddress}).then((returnEmail)=>{
         if(returnEmail){
-            res.status(501).send('User allready exist');
-            console.log(`${returnEmail} actually exist`);
+            res.status(401).send(returnEmail);
         }else{
             let user = new User({
                 UserName : UserName,
                 PhoneNumber : PhoneNumber,
                 EmailAdress : EmailAddress,
                 SelectServices : Select,
-                DeleiveryType : DeliveryType,
+                DeliveryType : DeliveryType,
                 Address : Address,
                 Items : Item,
                 CardNumber : CardNumber,
                 ExpiringDate :ExpiringDate,
                 CardName : CardName,
-                CardCode : CardCode
+                CardCode : CardCode,
             });
             user.save((err, data)=>{
                 if(err){
                     console.log(err);
-                   return res.status(401).send(`Error : ${err}`); 
+                   return res.status(401).send(err); 
                 }
-                res.status(200).send('Successfully registered');
-            console.log(`new email ${returnEmail} has been registered`);
+                res.status(200).send(data);
+            console.log(`new email ${data.EmailAdress} has been registered`);
             });
         }
     }, (err)=>{

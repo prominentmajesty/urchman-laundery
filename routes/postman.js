@@ -21,18 +21,17 @@ router.post('/postman', (req, res)=>{
         EmailAdress : EmailAddress,
         SelectServices : Select,
         DeliveryType : DeliveryType,
-        Adress : Address,
+        Address : Address,
         Items : Items,
         CardNumber : CardNumber,
         ExpiringDate : ExpiringDate,
         CardName : CardName,
-        CardCode : CardCode
-
+        CardCode : CardCode,
     });
 
     user.save().then((document)=>{
     console.log(document);
-    response.status(200).send('Your Registration Was successful');
+    res.status(200).send('Your Registration Was successful');
     }).catch((err)=>{
         console.log(err);
         res.status(400).send('Un-Successfull!! : Request Failed');

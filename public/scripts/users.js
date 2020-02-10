@@ -4,6 +4,7 @@
             title: "Please enter address"
         });*/
         // $('.toast').toast('show');
+    const signupForm = document.signupForm;
     var UserName = document.getElementById('UserName');
     var PhoneNumber = document.getElementById('PhoneNumber');
     var EmailAdress = document.getElementById('EmailAdress');
@@ -16,9 +17,12 @@
     var CardName = document.getElementById('CardName');
     var CardCode = document.getElementById('CardCode');
     var CheckBox = document.getElementById('checkBox');
+    var alert_success = document.getElementById('alert-success');
+    var alert_danger = document.getElementById('alert-danger');
+    var button = $('#submitbtn');
 
     var regexForPhoneNumber = /^[\d]{9,11}$/;
-    var regexForEmailAddres = /^[a-z\d]{2,}@[a-z]{2,7}\.[a-z]{2,3}(\.[a-z]{2,3})?/;
+    var regexForEmailAddres = /^([a-z\d]{2,})@([a-z]{2,7})\.([a-z]{2,3})(\.[a-z]{2,3})?/;
     var regexForCardNumber = /^(?:(4[0-9]{12}(?:[0-9]{3})?)|(5[1-5][0-9]{14})|(6(?:011|5[0-9]{2})[0-9]{12})|(3[47][0-9]{13})|(3(?:0[0-5]|[68][0-9])[0-9]{11})|((?:2131|1800|35[0-9]{3})[0-9]{11}))$/;
     var regexForExpiringDate = /^(0[1-9]|1[0-2]|[1-9])\/(1[4-9]|[2-9][0-9]|20[1-9][1-9])$/;
     var RegexCardCode = /^[0-9]{3}$/;
@@ -33,7 +37,7 @@
             PhoneNumber.classList.remove('is-valid');
             PhoneNumber.classList.remove('is-invalid');
             return true;
-        }
+        } 
     }
 
     function validateEmailAddress(){
@@ -187,18 +191,21 @@ $(document).ready(function () {
     });
 
     function loadDataToServer(){
+        var Index = 0;
         var postUsers = {
-            UserName : Name.val(),
-            PhoneNumber : PhoneNumber.val(),
-            EmailAddress : EmailAdress.val(),
-            Select : Select.val(),
-            DeliveryType : DeliveryType.val(),
-            Adress : Address.val(),
-            Item : Items.val(),
-            CardNumber : CardNumber.val(),
-            ExpiringDate : ExpiringDate.val(),
-            CardName : CardName.val(),
-            CardCode : CardCode.val(),
+            UserName : UserName.value,
+            PhoneNumber : PhoneNumber.value,
+            EmailAddress : EmailAdress.value,
+            Select : Select.value,
+            DeliveryType : DeliveryType.value,
+            Adress : Address.value,
+            Item : Items.value,
+            CardNumber : CardNumber.value,
+            ExpiringDate : ExpiringDate.value,
+            CardName : CardName.value,
+            CardCode : CardCode.value,
+            Index : Index+=1
+        
        }
 
         $.ajax({
@@ -206,28 +213,60 @@ $(document).ready(function () {
             url : '/users/postUsers',
             dataType : 'json',
             data : postUsers,
-            success : function(data){
-                console.log(`Successfully registered with the following details${data}`);
+            success : function(){
+                console.log('Successfully registered');
+                signupForm.reset();
+                PhoneNumber.classList.remove('is-valid');
+                PhoneNumber.classList.remove('is-invalid');
+                EmailAdress.classList.remove('is-valid');
+                EmailAdress.classList.remove('is-invalid');
+                CardNumber.classList.remove('is-valid');
+                CardNumber.classList.remove('is-invalid');
+                ExpiringDate.classList.remove('is-valid');
+                ExpiringDate.classList.remove('is-invalid');
+                CardCode.classList.remove('is-valid');
+                CardCode.classList.remove('is-invalid');
+                UserName.focus();
+                UserName.blur();
+                alert_success.style.display = 'block';
+                setTimeout(function() {
+                    $('#alert-success').fadeOut(); //or fadeOut
+                  }, 5000);
             },
-            error : function(error){
-                console.log(`Your Registration Was Unsuccessful due to the following error${error}`);
+            error : function(){
+                console.log('A User Already Has This Email Adress !! Try Another One');
+                EmailAdress.value = '';
+                EmailAdress.classList.add('is-invalid');
+                EmailAdress.focus();
+                EmailAdress.blur()
+                alert_danger.style.display = 'block';
+                setTimeout(function() {
+                    $('#alert-danger').fadeOut(); //or fadeOut
+                  }, 5000);
             } 
         });
 
     }
-
    $(document).on('keypress', function(event){ 
         if(event.keyCode === 13){
             event.preventDefault();
             if(checkIfUserNameIsEmpty() && checkIfPhoneNumberIsEmpty() && checkIfEmailAddressIsEmpty() && checkIfSelectIsEmpty() && checkIfDeliveryTypeIsEmpty() && checkIfAdressIsEmpty() && checkIfItemIsEmpty() && checkIfCardNumberIsEmpty() && checkIfExpiringDateIsEmpty() && checkIfCardNameIsEmpty() && checkIfCardCodeIsEmpty() && checkIfCheckBoxIsCheck()){
                 if(validatePhoneNumber() && validateCardNumber() && validateEmailAddress() && validateExpiringDate() && validateCardCode()){
-                    loadDataToServer();
-                    history.go(0);
+                    loadDataToServer()
+                   // history.go(0);
                }
             }
         }
     });
-   
+    button.on('click', function(e){
+        e.preventDefault();
+        if(checkIfUserNameIsEmpty() && checkIfPhoneNumberIsEmpty() && checkIfEmailAddressIsEmpty() && checkIfSelectIsEmpty() && checkIfDeliveryTypeIsEmpty() && checkIfAdressIsEmpty() && checkIfItemIsEmpty() && checkIfCardNumberIsEmpty() && checkIfExpiringDateIsEmpty() && checkIfCardNameIsEmpty() && checkIfCardCodeIsEmpty() && checkIfCheckBoxIsCheck()){
+            if(validatePhoneNumber() && validateCardNumber() && validateEmailAddress() && validateExpiringDate() && validateCardCode()){
+                loadDataToServer()
+               // history.go(0);
+           }
+        }
+    });
    function checkIfUserNameIsEmpty(){
        if(UserName.value === '' || UserName.value.trim() === ''){
        UserName.classList.remove('is-valid');
