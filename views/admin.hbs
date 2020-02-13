@@ -3,9 +3,9 @@
     <div class="container container-admin">
         {{#if returnDoc}}
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">    
-                <table class="table table-responsive table-hover">
-                        <thead class="thead-light">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" id = "getTable">  
+                    <table class="table table-responsive table-hover">
+                        <thead class="thead">
                             <tr>
                                 <th scope="col">Index</th>
                                 <th scope="col">Username</th>
@@ -25,18 +25,18 @@
                             {{#each returnDoc}}
                                 <tr>
                                     <th scope="row">{{this.order}}</th>
-                                    <td>{{this.UserName}}</td>
-                                    <td>{{this.PhoneNumber}}</td>
-                                    <td>{{this.EmailAdress}}</td>
-                                    <td>{{this.SelectServices}}</td>
-                                    <td>{{this.DeliveryType}}</td>
-                                    <td>{{this.Address}}</td>
-                                    <td>{{this.Items}}</td>
-                                    <td>{{this.CardNumber}}</td>
-                                    <td>{{this.ExpiringDate}}</td>
-                                    <td>{{this.CardName}}</td>
-                                    <td>{{this.CardCode}}</td>
-                                    <td><button type="button" class="btn btn-danger">Delete</button><td></td>
+                                    <td class = "id">{{this.UserName}}</td>
+                                    <td class="id">{{this.PhoneNumber}}</td>
+                                    <td class="email">{{this.EmailAdress}}</td>
+                                    <td class="id">{{this.SelectServices}}</td>
+                                    <td class="id">{{this.DeliveryType}}</td>
+                                    <td class="id">{{this.Address}}</td>
+                                    <td class="id">{{this.Items}}</td>
+                                    <td class="id">{{this.CardNumber}}</td>
+                                    <td class="id">{{this.ExpiringDate}}</td>
+                                    <td class="id">{{this.CardName}}</td c>
+                                    <td class="id">{{this.CardCode}}</td>
+                                    <td><button type="button" id = "button" name="buttond" class="btn btn-danger">Delete</button></td>
                                 </tr>
                             {{/each}}
                         </tbody>

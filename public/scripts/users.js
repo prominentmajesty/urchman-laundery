@@ -191,7 +191,6 @@ $(document).ready(function () {
     });
 
     function loadDataToServer(){
-        var Index = 0;
         var postUsers = {
             UserName : UserName.value,
             PhoneNumber : PhoneNumber.value,
@@ -204,8 +203,6 @@ $(document).ready(function () {
             ExpiringDate : ExpiringDate.value,
             CardName : CardName.value,
             CardCode : CardCode.value,
-            Index : Index+=1
-        
        }
 
         $.ajax({
